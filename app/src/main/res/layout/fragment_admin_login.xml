@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/topLogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/dukaanLogo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_10dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:contentDescription="@string/contentDescription"
+                android:src="@drawable/dukaan_logo" />
+
+            <ImageView
+                android:layout_width="@dimen/_150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_10dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="45dp"
+                android:contentDescription="@string/contentDescription"
+                android:src="@drawable/dukaanapp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topLogo">
+
+            <include layout="@layout/layout_admin_login_setup" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

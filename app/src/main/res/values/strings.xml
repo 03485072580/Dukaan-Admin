@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">DukaanAdmin</string>
+
+    <!--Simple XML Resources-->
+    <string name="adminEmail">Email</string>
+    <string name="adminPassword">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="cancel_order">CANCEL ORDER</string>
+
+    <!--Activity Package-->
+    <string name="activityAdmin">AdminActivity</string>
+
+    <!--Simple Fragments Package-->
+    <string name="fragmentAdminLogin">FragmentAdminLogin</string>
+    <string name="fragmentManageUsers">FragmentManageUsers</string>
+    <string name="fragmentOrdersList">FragmentOrdersList</string>
+
+    <!--Simple Toast Messages-->
+    <string name="warning_required_fields">All Fields are required</string>
+    <string name="email_verification_required">You have to verify your Email first for the Grant of Admin Privileges.\n Please verify it by visiting your inbox</string>
+    <string name="conflict_username">That User Name is already Existent\nTry Another One</string>
+    <string name="password_length_warning">Password Length Should be Minimum 6</string>
+    <string name="user_email_collsion">Email is already Existent</string>
+    <string name="network_error">There might be a problem with your Internet Connection. Try Reconnecting to the Internet</string>
+    <string name="bad_email_format">Email is not Properly Formatted</string>
+    <string name="bad_email">Bad Email</string>
+    <string name="something_went_wrong">Something Went Wrong</string>
+    <string name="bad_username_password">InValid User Name or Password</string>
+    <string name="shop_registration">Shop Registration</string>
+    <string name="shop_already_existent">Shop is Already Present. Try to make your Shop Name Unique. Tip append numbers</string>
+
+
+    <!--Firebase Fields and Nodes-->
+    <string name="db_admins_node">admins</string>
+
+    <string name="db_field_email">email</string>
+    <string name="db_field_password">password</string>
+    <string name="db_field_user_id">user_id</string>
+    <string name="db_field_scope">scope</string>
+    <string name="contentDesc">contentDescription</string>
+    <string name="contentDescription">contentDescription</string>
+
+
+</resources>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5dp"
+    android:background="@color/greyish">
+
+    <LinearLayout
+        android:id="@+id/orderBookContainer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120dp"
+        android:baselineAligned="false"
+        android:weightSum="100">
+
+        <RelativeLayout
+            android:id="@+id/expandableView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_120dp"
+            android:layout_weight="20">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_pink"
+                android:contentDescription="@string/contentDesc"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/contentDesc"
+                android:src="@drawable/ic_expander" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_120dp"
+            android:layout_weight="80">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120dp"
+                android:background="@color/white"
+                android:weightSum="80">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_120dp"
+                    android:layout_weight="20">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/_56dp"
+                        android:layout_height="@dimen/_56dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:layout_marginStart="@dimen/_10dp"
+                        android:src="@drawable/ic_launcher_background"
+                        app:civ_border_color="@color/greyish"
+                        app:civ_border_width="0.5dp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_120dp"
+                    android:layout_weight="60">
+
+                    <TextView
+                        android:id="@+id/orderID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:gravity="start"
+                        android:text="Order ID : sdredsfeaddfgfdfgdfg" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/orderID"
+                        android:background="@drawable/line" />
+
+                    <TextView
+                        android:id="@+id/orderPlacerName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:gravity="start"
+                        android:text="Placed By: Mr. Fasih" />
+
+                    <TextView
+                        android:id="@+id/orderPlacedDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/orderPlacerName"
+                        android:gravity="start"
+                        android:text="Dated : 12 Feb 2018" />
+
+                    <TextView
+                        android:id="@+id/orderStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/orderPlacedDate"
+                        android:gravity="start"
+                        android:text="Status : In Progress" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/orderDetails"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120dp"
+        android:layout_below="@id/orderBookContainer"
+        android:layout_marginTop="@dimen/_5dp"
+        android:background="@drawable/order_background"
+        android:visibility="gone">
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10dp"
+            android:layout_marginStart="@dimen/_10dp">
+
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product Name: Samsung Galaxy J7"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sp" />
+
+            <TextView
+                android:id="@+id/deliveryExpectation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/productName"
+                android:layout_marginLeft="@dimen/_5dp"
+                android:layout_marginStart="@dimen/_5dp"
+                android:text="Expected Delivery Date: 12 May, 2018"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/deliveryExpectation"
+                android:layout_marginLeft="@dimen/_5dp"
+                android:layout_marginStart="@dimen/_5dp"
+                android:text="Price: 350 USD"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/deliveryExpectation"
+                android:layout_marginEnd="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_10dp"
+                android:text="Quantity: 3"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_10dp"
+            android:background="@drawable/button_bg_std"
+            android:clickable="true"
+            android:paddingEnd="@dimen/_5dp"
+            android:paddingStart="@dimen/_5dp"
+            android:text="@string/cancel_order"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sp" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
