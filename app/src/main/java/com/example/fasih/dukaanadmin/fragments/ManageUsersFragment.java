@@ -150,6 +150,10 @@ public class ManageUsersFragment extends Fragment {
 
         shopsListArray = new ArrayList<>();
 
+
+
+
+
         Log.d("TAG1234", "onDataChange: Called");
         query = myRef
                 .child(getString(R.string.db_shop_profile_settings_node))
