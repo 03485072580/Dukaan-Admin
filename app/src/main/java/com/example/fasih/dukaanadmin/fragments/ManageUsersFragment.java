@@ -22,6 +22,7 @@ import com.example.fasih.dukaanadmin.utils.FirebaseMethods;
 import com.example.fasih.dukaanadmin.utils.KeepHandleFragments;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -154,6 +155,8 @@ public class ManageUsersFragment extends Fragment {
                 .child(getString(R.string.db_shop_profile_settings_node))
                 .orderByChild(getString(R.string.db_field_admin_approved))
                 .equalTo(false);
+
+
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
