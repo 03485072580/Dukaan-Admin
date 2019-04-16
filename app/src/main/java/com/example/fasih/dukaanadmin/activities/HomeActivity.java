@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hom);
         mylist = new ArrayList<String>();
+        replaceFragment(new ManageUsersFragment(), "Home");
 
     }
 

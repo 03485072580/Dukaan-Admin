@@ -3,12 +3,15 @@ package com.example.fasih.dukaanadmin.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.fasih.dukaanadmin.Models.ShopProfileSettings;
 import com.example.fasih.dukaanadmin.R;
 import com.example.fasih.dukaanadmin.activities.AdminActivity;
 import com.example.fasih.dukaanadmin.activities.HomeActivity;
@@ -25,7 +28,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Created by Fasih on 01/04/19.
@@ -215,6 +220,77 @@ public class FirebaseMethods {
         if (registerProgress != null) {
             this.updateProgress = registerProgress;
         }
+    }
+
+    public void searchQueryTextByUsername(Boolean query) {
+        Log.d("TAG1234", "searchQueryTextByUsername: " + query);
+        Query queryDB = myRef
+                .child(mContext.getString(R.string.db_shop_profile_settings_node))
+                .orderByChild(mContext.getString(R.string.db_field_admin_approved))
+                .equalTo(query);
+        queryDB.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    //there's a shop matching with particular shop name
+                    HashMap<String, Object> hashMap = (HashMap<String, Object>) dataSnapshot.getValue();
+                    Collection<Object> objectCollection = hashMap.values();
+
+                    Log.v("DATASNAPSHOT:", dataSnapshot.toString());
+                    ShopProfileSettings shopProfileSettings = null;
+
+//                    for (Iterator<Object> it = objectCollection.iterator(); it.hasNext(); ) {
+//                        /**
+//                         *
+//                         * Username is always unique.
+//                         * So it's always going to return 1 result only
+//                         */
+//                        HashMap map = (HashMap) it.next();
+//                        shopProfileSettings = new ShopProfileSettings(
+//                                (String) map.get(mContext.getString(R.string.db_field_user_id))
+//                                , (String) map.get(mContext.getString(R.string.db_field_first_name))
+//                                , (String) map.get(mContext.getString(R.string.db_field_last_name))
+//                                , (String) map.get(mContext.getString(R.string.db_field_user_name))
+//                                , (String) map.get(mContext.getString(R.string.db_field_email))
+//                                , (String) map.get(mContext.getString(R.string.db_field_scope))
+//                                , (String) map.get(mContext.getString(R.string.db_field_shop_address))
+//                                , (String) map.get(mContext.getString(R.string.db_field_city))
+//                                , (String) map.get(mContext.getString(R.string.db_field_country))
+//                                , (Boolean) map.get(mContext.getString(R.string.db_field_admin_approved))
+//                                , (String) map.get(mContext.getString(R.string.db_field_shop_category))
+//                                , (String) map.get(mContext.getString(R.string.db_field_profile_image_url))
+//                                , (String) map.get(mContext.getString(R.string.db_field_mall_id))
+//                        );
+//                    }
+//                    SearchUsernameFragment searchFragment = new SearchUsernameFragment();
+//                    searchFragment.setDataSet(shopProfileSettings);
+//
+//                    if (activityName.equals(mContext.getString(R.string.shopsListFragment))) {
+//                        ((FragmentActivity) mContext).getSupportFragmentManager()
+//                                .beginTransaction()
+//                                .replace(R.id.fragmentContainer, searchFragment, mContext.getString(R.string.searchUsernameFragment))
+//                                .commitAllowingStateLoss();
+//
+//                    }
+                } else {
+                    //No Results Found
+
+//                    SearchUsernameFragment searchFragment = new SearchUsernameFragment();
+//                    if (activityName.equals(mContext.getString(R.string.shopsListFragment))) {
+//                        ((FragmentActivity) mContext).getSupportFragmentManager()
+//                                .beginTransaction()
+//                                .replace(R.id.fragmentContainer, searchFragment, mContext.getString(R.string.searchUsernameFragment))
+//                                .commitAllowingStateLoss();
+//
+//                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

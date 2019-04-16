@@ -8,27 +8,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.example.fasih.dukaanadmin.Models.ShopProfileSettings;
 import com.example.fasih.dukaanadmin.R;
+
+import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ApprovelAdapter extends RecyclerView.Adapter<ApprovelAdapter.MyViewHolder> {
 
     private Context mContext;
+    private ArrayList<ShopProfileSettings> shopsDataList;
 
     public ApprovelAdapter(Context context) {
         mContext = context;
-//        setHasStableIds(true);
+        setHasStableIds(true);
     }
+
 
     @NonNull
     @Override
-    public ApprovelAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         try {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.layout_single_order_row, parent, false);
-            return new ApprovelAdapter.MyViewHolder(view);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.layout_single_shop_row, parent, false);
+//            setupUniversalImageLoader(UniversalImageLoader.getConfiguration(mContext.getApplicationContext()));
+            return new MyViewHolder(view);
         } catch (NullPointerException exc) {
-            Log.d("TAG1234", "onCreateViewHolder:ApprovelAdapter NullPointerException" + exc.getMessage());
+            Log.d("TAG1234", "onCreateViewHolder:MyOrdersListAdapter NullPointerException" + exc.getMessage());
         }
         return null;
     }
@@ -44,32 +53,39 @@ public class ApprovelAdapter extends RecyclerView.Adapter<ApprovelAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ApprovelAdapter.MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.email.setText("Email: " + shopsDataList.get(position).getEmail());
+        holder.brandName.setText("Shop Name: " + shopsDataList.get(position).getUser_name());
+        holder.shopID.setText("Shop ID : " + shopsDataList.get(position).getUser_id());
+//        ImageLoader.getInstance().displayImage(shopsDataList.get(position).getProfile_image_url(), holder.shopProfileImage);
     }
 
     @Override
     public int getItemCount() {
-        return 30;
+        return shopsDataList.size();
+    }
+
+//    private void setupUniversalImageLoader(ImageLoaderConfiguration config) {
+//        ImageLoader.getInstance().init(config);
+//    }
+
+    public void setDataSet(ArrayList<ShopProfileSettings> shopDataList) {
+        this.shopsDataList = shopDataList;
+
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private RelativeLayout expandableView, orderDetails;
+        private CircleImageView shopProfileImage;
+        private TextView shopID, brandName, email;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            expandableView = itemView.findViewById(R.id.expandableView);
-            orderDetails = itemView.findViewById(R.id.orderDetails);
-            expandableView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (orderDetails.getVisibility() == View.VISIBLE)
-                        orderDetails.setVisibility(View.GONE);
-                    else
-                        orderDetails.setVisibility(View.VISIBLE);
-                }
-            });
+            shopProfileImage = itemView.findViewById(R.id.shopProfileImage);
+            shopID = itemView.findViewById(R.id.shopID);
+            brandName = itemView.findViewById(R.id.brandName);
+            email = itemView.findViewById(R.id.email);
         }
     }
 }

@@ -41,4 +41,41 @@
     <string name="contentDescription">contentDescription</string>
 
 
+    <!--Firebase Database Nodes & Fields-->
+    <string name="db_users_node">users</string>
+    <string name="db_user_profile_settings_node">user_profile_settings</string>
+    <string name="db_shop_profile_settings_node">shop_profile_settings</string>
+    <string name="db_products_node">products</string>
+    <string name="db_mall_node">mall</string>
+
+    <string name="db_field_user_name">user_name</string>
+
+    <string name="db_field_first_name">first_name</string>
+    <string name="db_field_last_name">last_name</string>
+    <string name="db_field_payment_method">payment_method</string>
+
+    <string name="db_field_profile_photo">profile_photo</string>
+    <string name="db_field_products">products</string>
+
+    <string name="shopsListFragment">ShopsListFragment</string>
+    <string name="db_field_shop_address">shop_address</string>
+    <string name="db_field_city">city</string>
+    <string name="db_field_country">country</string>
+    <string name="db_field_admin_approved">admin_approved</string>
+    <string name="db_field_shop_category">shop_category</string>
+    <string name="db_field_profile_image_url">profile_image_url</string>
+    <string name="db_field_mall_id">mall_id</string>
+    <string name="db_field_product_name">product_name</string>
+    <string name="db_field_product_category">product_category</string>
+    <string name="db_field_product_image_url">product_image_url</string>
+    <string name="db_field_product_description">product_description</string>
+    <string name="db_field_product_price">product_price</string>
+    <string name="db_field_product_warranty">product_warranty</string>
+    <string name="db_field_product_stock">product_stock</string>
+    <string name="db_field_timeStamp">timeStamp</string>
+    <string name="db_field_product_id">product_id</string>
+    <string name="db_field_product_rating">product_rating</string>
+    <string name="db_field_shop_id">shop_id</string>
+
+
 </resources>
