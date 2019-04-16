@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DukaanAdmin.iml" filepath="$PROJECT_DIR$/DukaanAdmin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dukaan-Admin.iml" filepath="$PROJECT_DIR$/Dukaan-Admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

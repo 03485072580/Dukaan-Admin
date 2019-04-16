@@ -1,6 +1,7 @@
 package com.example.fasih.dukaanadmin.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.fasih.dukaanadmin.R;
 import com.example.fasih.dukaanadmin.activities.AdminActivity;
+import com.example.fasih.dukaanadmin.activities.HomeActivity;
 import com.example.fasih.dukaanadmin.fragments.OrdersListFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -123,12 +125,14 @@ public class FirebaseMethods {
                                                 updateProgress.setVisibility(View.GONE);
                                                 login.setAlpha(1f);
                                                 login.setEnabled(true);
+
+                                                ((AdminActivity) mContext).startActivity(new Intent(mContext, HomeActivity.class));
 //                                                ((AdminActivity) mContext).getSupportFragmentManager()
 //                                                        .popBackStackImmediate();
-                                                ((AdminActivity) mContext).getSupportFragmentManager()
-                                                        .beginTransaction()
-                                                        .replace(R.id.containerFragments, new OrdersListFragment(), mContext.getString(R.string.fragmentOrdersList))
-                                                        .commit();
+//                                                ((AdminActivity) mContext).getSupportFragmentManager()
+//                                                        .beginTransaction()
+//                                                        .replace(R.id.containerFragments, new OrdersListFragment(), mContext.getString(R.string.fragmentOrdersList))
+//                                                        .commit();
 
                                                 return;
                                             } else {
