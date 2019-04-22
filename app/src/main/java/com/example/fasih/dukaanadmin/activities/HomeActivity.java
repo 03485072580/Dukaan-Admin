@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.example.fasih.dukaanadmin.R;
+import com.example.fasih.dukaanadmin.fragments.Chat_user;
 import com.example.fasih.dukaanadmin.fragments.ManageUsersFragment;
 
 import java.util.ArrayList;
@@ -29,6 +30,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hom);
         mylist = new ArrayList<String>();
+        navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
         replaceFragment(new ManageUsersFragment(), "Home");
 
     }
@@ -50,7 +54,8 @@ public class HomeActivity extends AppCompatActivity {
 ////                    mTextMessage.setText(R.string.title_dashboard);
 //                    return true;
                 case R.id.navigation_notifications:
-//                    replaceFragment(new Chat_Fragment_List(), "chat");
+//                    startActivity(new Intent(HomeActivity.this,Chat_user.class));
+                    replaceFragment(new Chat_user(), "chat");
 //                    mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
