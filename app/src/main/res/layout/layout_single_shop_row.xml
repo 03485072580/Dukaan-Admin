@@ -27,27 +27,32 @@
                 android:weightSum="80">
 
                 <RelativeLayout
+                    android:id="@+id/expandableView"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_120dp"
                     android:layout_weight="20">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/shopProfileImage"
-                        android:layout_width="@dimen/_56dp"
-                        android:layout_height="@dimen/_56dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginLeft="@dimen/_10dp"
-                        android:layout_marginStart="@dimen/_10dp"
-                        android:src="@drawable/ic_launcher_background"
-                        app:civ_border_color="@color/greyish"
-                        app:civ_border_width="0.5dp" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/light_pink"
+                        android:contentDescription="@string/contentDesc"
+                        android:scaleType="centerCrop" />
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/contentDesc"
+                        android:src="@drawable/ic_expander" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_120dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="60">
 
                     <TextView

@@ -50,6 +50,13 @@ public class MyOrdersListAdapter extends RecyclerView.Adapter<MyOrdersListAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
@@ -65,13 +72,14 @@ public class MyOrdersListAdapter extends RecyclerView.Adapter<MyOrdersListAdapte
             super(itemView);
             expandableView = itemView.findViewById(R.id.expandableView);
             orderDetails = itemView.findViewById(R.id.orderDetails);
+
             expandableView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (orderDetails.getVisibility() == View.VISIBLE)
-                        orderDetails.setVisibility(View.GONE);
-                    else
-                        orderDetails.setVisibility(View.VISIBLE);
+//                    if (orderDetails.getVisibility() == View.VISIBLE)
+//                        orderDetails.setVisibility(View.GONE);
+//                    else
+//                        orderDetails.setVisibility(View.VISIBLE);
                 }
             });
         }

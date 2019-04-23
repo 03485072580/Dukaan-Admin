@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.fasih.dukaanadmin.Models.Chat_Model;
 import com.example.fasih.dukaanadmin.Models.ShopProfileSettings;
 import com.example.fasih.dukaanadmin.R;
 import com.example.fasih.dukaanadmin.adapters.ApprovelAdapter;
@@ -57,7 +58,7 @@ public class ManageUsersFragment extends Fragment {
     private String currentUserID = null;
     private ValueEventListener listener;
     private Query query;
-
+    ApprovelAdapter shopsListAdapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -110,7 +111,7 @@ public class ManageUsersFragment extends Fragment {
     private void setupRecyclerView(ArrayList<ShopProfileSettings> shopDataList) {
         try {
             shopsContainer.setLayoutManager(new LinearLayoutManager(getActivity()));
-            ApprovelAdapter shopsListAdapter = new ApprovelAdapter(getActivity());
+             shopsListAdapter = new ApprovelAdapter(getActivity());
             shopsListAdapter.setDataSet(shopDataList);
             shopsContainer.setAdapter(shopsListAdapter);
         } catch (NullPointerException exc) {
@@ -134,8 +135,7 @@ public class ManageUsersFragment extends Fragment {
                     currentUserID = user.getUid();
                     setupShopsDataSet();
                     Log.v("TAG1234", "onDataChange: nunn");
-                }
-                else {
+                } else {
                     setupShopsDataSet();
                     Log.v("TAG1234", "onDataChange: nunn");
                 }
@@ -151,9 +151,6 @@ public class ManageUsersFragment extends Fragment {
         shopsListArray = new ArrayList<>();
 
 
-
-
-
         Log.d("TAG1234", "onDataChange: Called");
         query = myRef
                 .child(getString(R.string.db_shop_profile_settings_node))
@@ -161,51 +158,71 @@ public class ManageUsersFragment extends Fragment {
                 .equalTo(false);
 
 
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.d("TAG1234", "onDataChange: ");
                 if (dataSnapshot.exists()) {
 
-                    Log.d("TAG1234", "onDataChange: "+dataSnapshot.toString());
-                    HashMap<String, Object> shopsMap = (HashMap<String, Object>) dataSnapshot.getValue();
-                    if (shopsMap != null) {
-                        Collection<Object> shopsList = shopsMap.values();
-                        if (!shopsListArray.isEmpty()) {
-                            shopsListArray.clear();
-                        }
+//                    shopsContainer.removeAllViewsInLayout();
+//                    shopsContainer.swapAdapter(shopsListAdapter, true);
+                    shopsListArray.clear();
+//                    shopsListAdapter.notifyDataSetChanged();
 
-//                        for (Iterator<Object> it = shopsList.iterator(); it.hasNext(); ) {
-//                            HashMap object = (HashMap) it.next();
-//
-//                            shopsListArray.add(
-//                                    new ShopProfileSettings(
-//                                            (String) object.get(getString(R.string.db_field_user_id))
-//                                            , (String) object.get(getString(R.string.db_field_first_name))
-//                                            , (String) object.get(getString(R.string.db_field_last_name))
-//                                            , (String) object.get(getString(R.string.db_field_user_name))
-//                                            , (String) object.get(getString(R.string.db_field_email))
-//                                            , (String) object.get(getString(R.string.db_field_scope))
-//                                            , (String) object.get(getString(R.string.db_field_shop_address))
-//                                            , (String) object.get(getString(R.string.db_field_city))
-//                                            , (String) object.get(getString(R.string.db_field_country))
-//                                            , (Boolean) object.get(getString(R.string.db_field_admin_approved))
-//                                            , (String) object.get(getString(R.string.db_field_shop_category))
-//                                            , (String) object.get(getString(R.string.db_field_profile_image_url))
-//                                            , (String) object.get(getString(R.string.db_field_mall_id))
-//                                    )
-//                            );
-////                        }//end for
-//                        setupRecyclerView(shopsListArray);
+
+                    for (DataSnapshot areaSnapshot : dataSnapshot.getChildren()) {
+//                    String areaName = areaSnapshot.getKey();
+                        ShopProfileSettings mos = areaSnapshot.getValue(ShopProfileSettings.class);
+                        ShopProfileSettings model = new ShopProfileSettings(mos.getUser_id(), mos.getFirst_name(), mos.getLast_name(), mos.getUser_name(), mos.getEmail(), mos.getScope(), mos.getShop_address(), mos.getCity(), mos.getCountry(), mos.getAdmin_approved(), mos.getShop_category(), mos.getProfile_image_url(), mos.getMall_id());
+                        shopsListArray.add(model);
+//                        home_adapter.notifyDataSetChanged();
+                        Log.i("response", areaSnapshot.toString());
+//                    Toast.makeText(getActivity(), areaName, Toast.LENGTH_SHORT).show();
                     }
+                    setupRecyclerView(shopsListArray);
 
+                    Log.d("TAG1234", "onDataChange: " + dataSnapshot.toString());
+//                    HashMap<String, Object> shopsMap = (HashMap<String, Object>) dataSnapshot.getValue();
+//                    if (shopsMap != null) {
+//                        Collection<Object> shopsList = shopsMap.values();
+//                        if (!shopsListArray.isEmpty()) {
+//                            shopsListArray.clear();
+//
+//
+//                            for (Iterator<Object> it = shopsList.iterator(); it.hasNext(); ) {
+//                                HashMap object = (HashMap) it.next();
+//
+//                                Log.v("DATASSSSSS", String.valueOf(object) + " K   " + it.next().toString());
+////                                shopsListArray.add(
+////                                        new ShopProfileSettings(
+////                                                (String) object.get(getString(R.string.db_field_user_id))
+////                                                , (String) object.get(getString(R.string.db_field_first_name))
+////                                                , (String) object.get(getString(R.string.db_field_last_name))
+////                                                , (String) object.get(getString(R.string.db_field_user_name))
+////                                                , (String) object.get(getString(R.string.db_field_email))
+////                                                , (String) object.get(getString(R.string.db_field_scope))
+////                                                , (String) object.get(getString(R.string.db_field_shop_address))
+////                                                , (String) object.get(getString(R.string.db_field_city))
+////                                                , (String) object.get(getString(R.string.db_field_country))
+////                                                , (Boolean) object.get(getString(R.string.db_field_admin_approved))
+////                                                , (String) object.get(getString(R.string.db_field_shop_category))
+////                                                , (String) object.get(getString(R.string.db_field_profile_image_url))
+////                                                , (String) object.get(getString(R.string.db_field_mall_id))
+////                                        )
+////                                );
+////                        }//end for
+//                                setupRecyclerView(shopsListArray);
+//                            }
+
+//                        }
+//                    }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Log.d("TAG1234", "onDataChange: " +databaseError.getMessage());
+                Log.d("TAG1234", "onDataChange: " + databaseError.getMessage());
             }
         });
     }

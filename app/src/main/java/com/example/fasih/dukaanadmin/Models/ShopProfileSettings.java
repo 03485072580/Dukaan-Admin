@@ -38,19 +38,7 @@ public class ShopProfileSettings implements Parcelable {
     public ShopProfileSettings() {
     }
 
-    public ShopProfileSettings(String user_id
-            , String first_name
-            , String last_name
-            , String user_name
-            , String email
-            , String scope
-            , String shop_address
-            , String city
-            , String country
-            , Boolean admin_approved
-            , String shop_category
-            , String profile_image_url
-            , String mall_id) {
+    public ShopProfileSettings(String user_id, String first_name, String last_name, String user_name, String email, String scope, String shop_address, String city, String country, Boolean admin_approved, String shop_category, String profile_image_url, String mall_id) {
         this.user_id = user_id;
         this.first_name = first_name;
         this.last_name = last_name;
